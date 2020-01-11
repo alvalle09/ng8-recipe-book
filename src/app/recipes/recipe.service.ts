@@ -1,8 +1,9 @@
 import { Recipe } from './recipe.model';
+import { ThrowStmt } from '@angular/compiler';
 
 
 export class RecipeService {
-    recipes: Recipe[] = [
+    private recipes: Recipe[] = [
         new Recipe(
           "A Test Recipe",
           "This is simply test",
@@ -19,4 +20,9 @@ export class RecipeService {
           "https://assets.bonappetit.com/photos/5d7296eec4af4d0008ad1263/master/pass/Basically-Gojuchang-Chicken-Recipe-Wide.jpg"
         )
       ];
+
+      getRecipes() {
+          //slice it so we return a new array and not modify original
+          return this.recipes.slice();
+      }
 }
