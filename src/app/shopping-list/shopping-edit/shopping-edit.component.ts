@@ -12,6 +12,7 @@ export class ShoppingEditComponent implements OnInit {
   @ViewChild('nameInput', {static: true}) nameInputRef: ElementRef;
   @ViewChild('amountInput', {static: true}) amountInputRef: ElementRef;
 
+  // dependency injection of Shopping List Service
   constructor(private slService: ShoppingListService) { }
 
   ngOnInit() {
@@ -23,7 +24,7 @@ export class ShoppingEditComponent implements OnInit {
     const newIngredient = new Ingredient(ingName, ingAmount);
     this.slService.addIngredient(newIngredient);
   }
-  
+
 }
 
 
