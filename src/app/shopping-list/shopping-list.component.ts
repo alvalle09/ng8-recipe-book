@@ -7,6 +7,7 @@ import { ShoppingListService } from './shopping-list.service';
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
+
 export class ShoppingListComponent implements OnInit {
   ingredients: Ingredient[];
 
@@ -18,8 +19,7 @@ export class ShoppingListComponent implements OnInit {
       .subscribe(
         (ingredients: Ingredient[]) => {
           this.ingredients = ingredients;
-        }
-      )
+        })
   }
 
 }
