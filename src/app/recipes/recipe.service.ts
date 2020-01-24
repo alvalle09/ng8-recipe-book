@@ -1,6 +1,7 @@
 import { EventEmitter } from '@angular/core';
 
 import { Recipe } from './recipe.model';
+import { Ingredient } from '../Shared/ingredient.model';
 
 
 export class RecipeService {
@@ -8,19 +9,29 @@ export class RecipeService {
 
     private recipes: Recipe[] = [
         new Recipe(
-          "A Test Recipe",
-          "This is simply test",
-          "https://www.nps.gov/subjects/camping/images/recipe_1.jpg?maxwidth=1200&maxheight=1200&autorotate=false"
+          "Beef Kabobs",
+          "A delicious beef meal cooked over a coal fire.",
+          "https://www.nps.gov/subjects/camping/images/recipe_1.jpg?maxwidth=1200&maxheight=1200&autorotate=false",
+          [
+            new Ingredient('Meat', 10), 
+            new Ingredient('Kabob sticks', 10),
+            new Ingredient('Veggies', 30)
+          ]
         ),
         new Recipe(
-          "Another Recipe",
-          "This is sweet recipe",
-          "https://upload.wikimedia.org/wikipedia/commons/3/39/Recipe.jpg"
+          "Shrimp Salad",
+          "Suculent shrimp with...",
+          "https://upload.wikimedia.org/wikipedia/commons/3/39/Recipe.jpg",
+          []
         ),
         new Recipe(
-          "Super Recipe",
-          "This is super recipe",
-          "https://assets.bonappetit.com/photos/5d7296eec4af4d0008ad1263/master/pass/Basically-Gojuchang-Chicken-Recipe-Wide.jpg"
+          "Chicken bbq delight",
+          "Pan roasted sweet chilli with lime",
+          "https://assets.bonappetit.com/photos/5d7296eec4af4d0008ad1263/master/pass/Basically-Gojuchang-Chicken-Recipe-Wide.jpg",
+          [
+            new Ingredient('Chicken', 10), 
+            new Ingredient('Chilli', 10),
+          ]
         )
       ];
 
