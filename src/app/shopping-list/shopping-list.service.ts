@@ -1,7 +1,8 @@
-import { Ingredient } from '../Shared/ingredient.model';
 import { EventEmitter } from '@angular/core';
+import { Ingredient } from '../Shared/ingredient.model';
 
 export class ShoppingListService {
+    // inform other components new ingredient has been added
     ingredientChanged = new EventEmitter<Ingredient[]>();
 
     private ingredients: Ingredient[] = [
@@ -11,6 +12,7 @@ export class ShoppingListService {
       ];
 
       getIngredients() {
+        // working with a copy of ingredients array, not actual array
         return this.ingredients.slice();
       }
 
@@ -19,4 +21,5 @@ export class ShoppingListService {
         this.ingredientChanged.emit(this.ingredients.slice());
       }
 }
+
 
