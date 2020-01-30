@@ -1,9 +1,10 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../Shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
-
+@Injectable()
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
 
@@ -22,7 +23,10 @@ export class RecipeService {
           "Shrimp Salad",
           "Suculent shrimp with...",
           "https://upload.wikimedia.org/wikipedia/commons/3/39/Recipe.jpg",
-          []
+          [
+            new Ingredient('Shrimp', 12), 
+            new Ingredient('Noodles', 1)
+          ]
         ),
         new Recipe(
           "Chicken bbq delight",
@@ -35,8 +39,16 @@ export class RecipeService {
         )
       ];
 
+      constructor(private slService: ShoppingListService) {}
+
       getRecipes() {
           //slice it so we return a new array and not modify original
           return this.recipes.slice();
       }
+
+      addIngredientToShoppingList(ingredients: Ingredient[]) {
+        this.slService;
+      }
+
+
 }
