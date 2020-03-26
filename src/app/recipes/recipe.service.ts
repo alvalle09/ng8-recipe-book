@@ -10,7 +10,7 @@ export class RecipeService {
 
     private recipes: Recipe[] = [
         new Recipe(
-          "Beef Kabobs",
+          "Beef Kabob",
           "A delicious beef meal cooked over a coal fire.",
           "https://www.nps.gov/subjects/camping/images/recipe_1.jpg?maxwidth=1200&maxheight=1200&autorotate=false",
           [
@@ -44,6 +44,10 @@ export class RecipeService {
       getRecipes() {
           //slice it so we return a new array and not modify original
           return this.recipes.slice();
+      }
+
+      getRecipe(index: number) {
+        return this.recipes[index];
       }
 
       addIngredientToShoppingList(ingredients: Ingredient[]) {
