@@ -36,6 +36,16 @@ export class RecipeService {
             new Ingredient('Chicken', 10), 
             new Ingredient('Chilli', 10),
           ]
+        ),
+        new Recipe(
+          "Chicken pot pie...my pot pie kitty!",
+          "South Park Chicken pot pie",
+          "https://images.pexels.com/photos/1771033/pexels-photo-1771033.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+          [
+            new Ingredient('Chicken', 10), 
+            new Ingredient('Pie', 10),
+            new Ingredient('Doe', 2)
+          ]
         )
       ];
 
