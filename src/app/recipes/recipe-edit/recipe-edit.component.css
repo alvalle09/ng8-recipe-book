@@ -2,3 +2,7 @@
 button {
     margin: 3px;
 }
+
+.ng-invalid {
+    border: 1px solid red;
+}
