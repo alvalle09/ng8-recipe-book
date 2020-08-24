@@ -3,6 +3,7 @@ button {
     margin: 3px;
 }
 
-.ng-invalid {
+input.ng-invalid, textarea.ng-invalid
+ {
     border: 1px solid red;
 }
