@@ -1,4 +1,7 @@
 import { Injectable } from "@angular/core";
 
-@Injectable()
-export class DataStorageService {}
+// optional syntax to avoid setting up in app module providers array
+@Injectable({providedIn: 'root'})
+export class DataStorageService {
+    constructor()
+}
