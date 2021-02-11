@@ -10,5 +10,9 @@ export class DataStorageService {
 
     storeRecipes() {
         const recipes = this.recipeService.getRecipes();
+
+        this.http.put(https://ng-complete-guide-d4625-default-rtdb.firebaseio.com/)
     }
 }
+
+
