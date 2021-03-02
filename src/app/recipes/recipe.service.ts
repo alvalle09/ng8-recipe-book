@@ -46,6 +46,12 @@ export class RecipeService {
 
   constructor(private slService: ShoppingListService) {}
 
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    // inform all components using recipes of change in data
+    this.recipesChanged.next(this.recipes.slice());    
+  }
+
   getRecipes() {
     //slice it so we return a new array and not modify original
     return this.recipes.slice();

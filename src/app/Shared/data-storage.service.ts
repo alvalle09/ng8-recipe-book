@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Recipe } from "../recipes/recipe.model";
 
 import { RecipeService } from "../recipes/recipe.service";
 
@@ -20,9 +21,9 @@ export class DataStorageService {
 
     fetchRecipes() {
         this.http
-            .get('https://ng-complete-guide-d4625-default-rtdb.firebaseio.com/recipes.json')
+            .get<Recipe[]>('https://ng-complete-guide-d4625-default-rtdb.firebaseio.com/recipes.json')
             .subscribe(recipes => {
-                console.log(recipes)
+                this.recipeService.setRecipes(recipes);
             });
     }
 }
