@@ -17,6 +17,14 @@ export class DataStorageService {
                 console.log(response);
             });
     }
+
+    fetchRecipes() {
+        this.http
+            .get('https://ng-complete-guide-d4625-default-rtdb.firebaseio.com/recipes.json')
+            .subscribe(recipes => {
+                console.log(recipes)
+            });
+    }
 }
 
 
