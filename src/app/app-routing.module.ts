@@ -13,7 +13,7 @@ const appRoutes: Routes = [
     { path: '', redirectTo: '/recipes', pathMatch: 'full' },
     { path: 'recipes', component: RecipesComponent, children: [
         { path: '', component: RecipeStartComponent},
-        // order of these routes matter
+        // order of these routes matters
         { path: 'new', component: RecipeEditComponent },
         { path: ':id', component: RecipeDetailComponent, resolve: [RecipesResolverService] },        
         { path: ':id/edit', component: RecipeEditComponent, resolve: [RecipesResolverService] }
