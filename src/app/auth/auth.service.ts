@@ -8,7 +8,13 @@ export class AuthService {
 
     }
 
-    signup() {
-        this.http.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]');
+    signup(email: string, password: string) {
+        return this.http.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]'
+        {
+            email: email, 
+            password: password, 
+            returnSecureToken: true
+        }
+        );
     }
 }
