@@ -1,3 +1,4 @@
+import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { AuthService } from "./auth.service";
@@ -39,8 +40,12 @@ export class AuthComponent {
           console.log(resData);
           this.isLoading = false;
         },
-        (error) => {
-          console.log(error);
+        (errorRes) => {
+          console.log(errorRes);
+          switch (errorRes.error.error.message) {
+            case 'EMAIL_EXISTS':
+              this.error = 'This email exists already'
+          };
           this.error = 'An error occurred!'
           this.isLoading = false;
         } 
