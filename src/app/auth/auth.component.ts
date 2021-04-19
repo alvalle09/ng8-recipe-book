@@ -46,7 +46,7 @@ export class AuthComponent {
             case 'EMAIL_EXISTS':
               this.error = 'This email exists already'
           };
-          this.error = 'An error occurred!'
+          //this.error = 'An error occurred!'
           this.isLoading = false;
         } 
       );
