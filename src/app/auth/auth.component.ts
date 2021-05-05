@@ -1,7 +1,8 @@
 import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
-import { AuthService } from "./auth.service";
+import { Observable } from "rxjs";
+import { AuthResponseData, AuthService } from "./auth.service";
 
 @Component({
   selector: "app-auth",
@@ -29,36 +30,29 @@ export class AuthComponent {
     const email = form.value.email;
     const password = form.value.password;
 
+    let authObs: Observable<AuthResponseData>;
+
     // activate spinner while loading
     this.isLoading = true;
     if (this.isLoginMode) {
-      this.authService.login(email, password).subscribe(
-        resData => {
-          console.log(resData);
-          this.isLoading = false;
-        },
-         errorMessage => {
-          console.log(errorMessage);
-          this.error = errorMessage;
-          //this.error = 'An error occurred!'
-          this.isLoading = false;
-        } 
-      );
+      authObs = this.authService.login(email, password);
     } else {
         //console.log('calling signup');
-      this.authService.signup(email, password).subscribe(
-        resData => {
-          console.log(resData);
-          this.isLoading = false;
-        },
-        (errorMessage) => {
-          console.log(errorMessage);
-          this.error = errorMessage;
-          //this.error = 'An error occurred!'
-          this.isLoading = false;
-        } 
-      );
+      authObs = this.authService.signup(email, password)
     }
+
+    authObs.subscribe(
+      resData => {
+        console.log(resData);
+        this.isLoading = false;
+      },
+       errorMessage => {
+        console.log(errorMessage);
+        this.error = errorMessage;
+        //this.error = 'An error occurred!'
+        this.isLoading = false;
+      } 
+    );
 
     form.reset();
   }
