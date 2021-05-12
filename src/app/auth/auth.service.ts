@@ -33,16 +33,14 @@ export class AuthService {
         )
         .pipe(
             catchError(this.handleError), 
-            tap(respData => {
-            // *1000 to convert to milliseconds
-            const expirationDate = new Date(new Date().getTime() + +respData.expiresIn * 1000); 
-            const user = new User(
-                respData.email, 
-                respData.localId, 
-                respData.idToken, 
-                expirationDate
-            );
-            this.user.next(user);
+            tap(respData => { 
+                this.handleAuthentication(
+                    respData.email,
+                    respData.localId,
+                    respData.idToken,
+                    +respData.expiresIn
+                )           
+            
             })
         );
     }
@@ -56,7 +54,29 @@ export class AuthService {
                     returnSecureToken: true
                 }
             )
-            .pipe(catchError(this.handleError));            
+            .pipe(
+                catchError(this.handleError),
+                tap(respData => { 
+                this.handleAuthentication(
+                    respData.email,
+                    respData.localId,
+                    respData.idToken,
+                    +respData.expiresIn
+                    )           
+        
+                })
+            );            
+    }
+
+    private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
+        const expirationDate = new Date(new Date().getTime() + expiresIn * 1000); 
+            const user = new User(
+                email, 
+                userId, 
+                token, 
+                expirationDate
+            );
+            this.user.next(user);
     }
 
     private handleError(errorRes: HttpErrorResponse) {
