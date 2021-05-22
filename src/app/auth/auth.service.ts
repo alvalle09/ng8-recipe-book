@@ -24,7 +24,7 @@ export class AuthService {
     signup(email: string, password: string) {
         console.log(email);
         return this.http.post<AuthResponseData>
-            ('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=**************************',
+            ('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBYHnWcUaZm-wqbbnnVBWPmZa1mwZtw4oY',
             {
                 email: email, 
                 password: password, 
@@ -47,7 +47,7 @@ export class AuthService {
 
     login(email: string, password: string) {
         return this.http.post<AuthResponseData>(
-            'https://identitytoolkit.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=*******************',
+            'https://identitytoolkit.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBYHnWcUaZm-wqbbnnVBWPmZa1mwZtw4oY',
                 {
                     email: email, 
                     password: password, 
@@ -68,6 +68,10 @@ export class AuthService {
             );            
     }
 
+    logout() {
+        this.user.next(null);
+    }
+
     private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
         const expirationDate = new Date(new Date().getTime() + expiresIn * 1000); 
             const user = new User(
@@ -77,6 +81,7 @@ export class AuthService {
                 expirationDate
             );
             this.user.next(user);
+            console.log(token);
     }
 
     private handleError(errorRes: HttpErrorResponse) {

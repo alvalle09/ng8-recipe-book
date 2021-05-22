@@ -3,14 +3,13 @@ import { Injectable } from "@angular/core";
 import { Recipe } from "../recipes/recipe.model";
 import { RecipeService } from "../recipes/recipe.service";
 import { exhaustMap, map, take, tap } from 'rxjs/operators';
-import { AuthService } from "../auth/auth.service";
+
 
 // optional syntax to avoid setting up in app module providers array
 @Injectable({providedIn: 'root'})
 export class DataStorageService {
     constructor(private http:HttpClient,
                 private recipeService: RecipeService,
-                private authService: AuthService
                 ) {}
 
     storeRecipes() {
@@ -21,14 +20,13 @@ export class DataStorageService {
                 recipes
             )
             .subscribe(response => {
-                console.log(response);
+                console.log('Store recipe response: ' + response);
             });
     }
 
     fetchRecipes() {
-    
-              return this.http.get<Recipe[]>(
-                'https://ng-course-recipe-book-65f10.firebaseio.com/recipes.json'            
+            return this.http.get<Recipe[]>(
+                'https://ng-complete-guide-d4625-default-rtdb.firebaseio.com/recipes.json'            
               ).pipe(
                 map(recipes => {
                 return recipes.map(recipe => {
