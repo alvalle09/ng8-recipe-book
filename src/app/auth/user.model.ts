@@ -13,7 +13,5 @@ export class User {
                 return null;
             }
             return this._token;
-        }
-
-    
+        }    
 }
