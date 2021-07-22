@@ -77,6 +77,7 @@ export class AuthService {
         this.router.navigate(['/auth']);
         // used to clear all data
         //localStorage.clear();
+        // clear single item
         localStorage.removeItem('userData');
         if (this.tokenExpiriationTimner) {
             clearTimeout(this.tokenExpiriationTimner);
@@ -86,9 +87,10 @@ export class AuthService {
     }
 
     autoLogout(expirationDuration: number) {
+        console.log(expirationDuration);
         this.tokenExpiriationTimner = setTimeout(()=> {
             this.logout();
-        }, 2000);
+        }, expirationDuration);
     }
 
     autoLogin() {

@@ -4,11 +4,12 @@ export class User {
         public email: string, 
         public id: string,
         private _token: string, 
-        private _tokenExpiratinoDate: Date ) {}
+        private _tokenExpirationDate: Date ) {}
     
         get token() {
             // check if token expired
-            if (this._tokenExpiratinoDate || new Date() > this._tokenExpiratinoDate) {
+            if (!this._tokenExpirationDate || 
+                new Date() > this._tokenExpirationDate) {
                 return null;
             }
             return this._token;
