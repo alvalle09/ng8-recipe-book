@@ -15,7 +15,6 @@ export class AuthComponent {
   error: string = null;
 
   constructor(private authService: AuthService, private router: Router) {
-
   }
 
   onSwitchMode() {
@@ -60,4 +59,9 @@ export class AuthComponent {
 
     form.reset();
   }
+
+  onHandleError() {
+    this.error = null;
+  }
+
 }
