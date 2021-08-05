@@ -1,9 +1,8 @@
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 import { Component, ComponentFactoryResolver, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
-import { AlertCompoent } from "../Shared/alert/alert.component";
+import { AlertComponent } from "../Shared/alert/alert.component";
 import { PlaceHolderDirective } from "../Shared/placeholder/placeholder.directive";
 import { AuthResponseData, AuthService } from "./auth.service";
 
@@ -16,7 +15,7 @@ export class AuthComponent {
   isLoginMode = true;
   isLoading = false;
   error: string = null;
-  @ViewChild(PlaceHolderDirective, { static: false }) alertHost: PlaceHolderDirective;
+  @ViewChild(PlaceHolderDirective, {static: false }) alertHost: PlaceHolderDirective;
 
   constructor(private authService: AuthService, 
               private router: Router,
@@ -73,8 +72,9 @@ export class AuthComponent {
 
   private showErrorAlert(message: string) {
     const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(
-      AlertCompoent
+      AlertComponent
     );      
+    console.log(this.alertHost);
     const hostViewContainerRef = this.alertHost.viewContainerRef;
     hostViewContainerRef.clear();
 

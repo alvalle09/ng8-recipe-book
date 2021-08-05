@@ -20,7 +20,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './Shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
-import { AlertCompoent } from './Shared/alert/alert.component';
+import { AlertComponent } from './Shared/alert/alert.component';
 import { PlaceHolderDirective } from './Shared/placeholder/placeholder.directive';
 
 @NgModule({
@@ -38,7 +38,7 @@ import { PlaceHolderDirective } from './Shared/placeholder/placeholder.directive
     RecipeEditComponent, 
     AuthComponent,
     LoadingSpinnerComponent,
-    AlertCompoent, 
+    AlertComponent, 
     PlaceHolderDirective
   ],
   imports: [
@@ -58,6 +58,9 @@ import { PlaceHolderDirective } from './Shared/placeholder/placeholder.directive
     //   multi: true
     // }
   ],  
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AlertComponent
+  ]
 })
 export class AppModule { }
