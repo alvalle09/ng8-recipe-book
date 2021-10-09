@@ -8,13 +8,13 @@ import { exhaustMap, map, take, tap } from 'rxjs/operators';
 // optional syntax to avoid setting up in app module providers array
 @Injectable({providedIn: 'root'})
 export class DataStorageService {
-    constructor(private http:HttpClient,
+    constructor(private httpClient: HttpClient,
                 private recipeService: RecipeService,
                 ) {}
 
     storeRecipes() {
         const recipes = this.recipeService.getRecipes();
-        this.http
+        this.httpClient
             .put(
                 'https://ng-complete-guide-d4625-default-rtdb.firebaseio.com/recipes.json', 
                 recipes
@@ -25,7 +25,8 @@ export class DataStorageService {
     }
 
     fetchRecipes() {
-            return this.http.get<Recipe[]>(
+            return this.httpClient
+            .get<Recipe[]>(
                 'https://ng-complete-guide-d4625-default-rtdb.firebaseio.com/recipes.json'            
               ).pipe(
                 map(recipes => {
